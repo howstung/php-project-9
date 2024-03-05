@@ -87,7 +87,7 @@ $app->post('/urls', function ($request, $response) use ($params, $router, $UrlMa
             'error' => $Url->getError(),
             'url' => $Url->getName(),
             'menu_active' => 'sites'
-        ]));
+        ]))->withStatus(422);
     }
 
     $UrlManager->save($Url);
