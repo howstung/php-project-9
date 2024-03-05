@@ -10,10 +10,10 @@
                 {% for item in menu %}
                     <li class="nav-item">
                         <a class="nav-link
-                        {% if item.active is same as true %}
+                        {% if item.name is same as menu_active %}
                         active
                         {% endif %}"
-                           aria-current="page" href="{{ item['link'] }}"> {{ item['name'] }} </a>
+                           aria-current="page" href="{{ item['link'] }}"> {{ item['desc'] }} </a>
                     </li>
                 {% endfor %}
             </ul>
