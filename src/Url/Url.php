@@ -41,7 +41,7 @@ class Url
         $schemes = ['http://', 'https://'];
         foreach ($schemes as $checkScheme) {
             if (strpos($url, $checkScheme) === false) {
-                return false;
+                return filter_var($url, FILTER_VALIDATE_URL);
             }
         }
         return filter_var($url, FILTER_VALIDATE_URL);
