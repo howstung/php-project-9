@@ -37,7 +37,14 @@ class Url
 
     public function isValid()
     {
-        return filter_var($this->name, FILTER_VALIDATE_URL);
+        $url = $this->name;
+        $schemes = ['http://', 'https://'];
+        foreach ($schemes as $checkScheme) {
+            if (strpos($url, $checkScheme) === false) {
+                return false;
+            }
+        }
+        return filter_var($url, FILTER_VALIDATE_URL);
     }
 
     public function getError()
