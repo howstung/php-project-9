@@ -21,7 +21,7 @@ class Url
             ];
         }
         $this->id = $params['id'] ?? null;
-        $this->name = $params['name'] ? $this->parse($params['name']) : null;
+        $this->name = $params['name'] ?? null;
         $this->setCreatedAt($params['created_at'] ?? null);
     }
 
@@ -40,11 +40,11 @@ class Url
         $url = $this->name;
         $schemes = ['http://', 'https://'];
         foreach ($schemes as $checkScheme) {
-            if (strpos($url, $checkScheme) === false) {
+            if (strpos($url, $checkScheme) !== false) {
                 return filter_var($url, FILTER_VALIDATE_URL);
             }
         }
-        return filter_var($url, FILTER_VALIDATE_URL);
+        return false;
     }
 
     public function getError()
