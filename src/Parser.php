@@ -27,31 +27,27 @@ class Parser
         $response = $this->response;
 
         $code = $response->getStatusCode();
+
         $h1 = $this->getTag('h1');
         $title = $this->getTag('title');
-        $metaNameS = $this->getTag('meta[name="description"]', false);
+        $metaNameS = $this->getTag('meta[name="description"]');
         $description = !$metaNameS ? "" : $metaNameS->getAttribute('content');
+
+        $h1 = !$h1 ? "" : $h1->text();
+        $title = !$title ? "" : $title->text();
 
         return new UrlCheck([
             'url_id' => $this->url->getId(),
             'status_code' => $code,
-            'h1' => $h1 ?? '',
-            'title' => $title ?? '',
-            'description' => $description ?? '',
+            'h1' => $h1,
+            'title' => $title,
+            'description' => $description,
         ]);
     }
 
-    private function getTag(string $tagSearch, bool $getText = true)
+    private function getTag(string $tagSearch)
     {
         $document = $this->document;
-        if ($document->has($tagSearch)) {
-            if ($getText) {
-                return $document->find($tagSearch)[0]->text();
-            }
-            $res = $document->find($tagSearch)[0];
-        } else {
-            $res = '';
-        }
-        return $res;
+        return $document->find($tagSearch)[0];
     }
 }

@@ -5,7 +5,7 @@
 
 ### GitHub actions
 
-[![PHP_CodeSniffer](https://github.com/howstung/php-project-9/actions/workflows/action-check.yml/badge.svg)](https://github.com/howstung/php-project-9/actions/workflows/action-check.yml)
+[![PHP_CodeSniffer and PHPStan](https://github.com/howstung/php-project-9/actions/workflows/action-check.yml/badge.svg)](https://github.com/howstung/php-project-9/actions/workflows/action-check.yml)
 
 ### CodeClimate
 
