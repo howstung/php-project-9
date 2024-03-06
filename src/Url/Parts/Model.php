@@ -4,8 +4,8 @@ namespace App\Url\Parts;
 
 trait Model
 {
-    private $isNew = false;
-    private $id;
+    private bool $isNew = false;
+    private ?int $id;
 
     public function isNew()
     {
@@ -17,9 +17,9 @@ trait Model
         $this->isNew = true;
     }
 
-    public function setId(int $id)
+    public function setId(string|false $id)
     {
-        $this->id = $id;
+        $this->id = (int)$id;
     }
 
     public function getId()

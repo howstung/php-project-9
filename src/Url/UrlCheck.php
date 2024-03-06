@@ -10,11 +10,11 @@ class UrlCheck
     use CreatedAt;
     use Model;
 
-    private $url_id;
-    private $status_code;
-    private $h1;
-    private $title;
-    private $description;
+    private int $url_id;
+    private int $status_code;
+    private string $h1;
+    private string $title;
+    private string $description;
 
     private const LENGTH_VARCHAR = 255;
 
@@ -34,7 +34,7 @@ class UrlCheck
         return $this->status_code;
     }
 
-    private function makeVarchar($string)
+    private function makeVarchar(string $string)
     {
         return mb_strlen($string) > $this::LENGTH_VARCHAR ? mb_substr($string, 0, $this::LENGTH_VARCHAR - 1) : $string;
     }

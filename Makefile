@@ -12,6 +12,9 @@ lint:
 lint-fix:
 		composer exec phpcbf -- --standard=PSR12 -v src public
 
+phpstan:
+		./vendor/bin/phpstan analyse src public
+
 start:
 		PHP_CLI_SERVER_WORKERS=5 php -S 0.0.0.0:$(PORT) -t public
 

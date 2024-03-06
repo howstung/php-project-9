@@ -10,6 +10,8 @@ use Psr\Http\Message\ResponseInterface;
 class Parser
 {
     private ResponseInterface $response;
+    private Document $document;
+    private Url $url;
 
     public function __construct(ResponseInterface $response, Url $Url)
     {
@@ -39,7 +41,7 @@ class Parser
         ]);
     }
 
-    private function getTag($tagSearch, $getText = true)
+    private function getTag(string $tagSearch, bool $getText = true)
     {
         $document = $this->document;
         if ($document->has($tagSearch)) {

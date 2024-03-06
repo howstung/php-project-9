@@ -107,6 +107,12 @@ $app->post('/urls/{url_id}/checks', callable: function ($request, $response, $ar
     $url_id = $args['url_id'];
     $Url = $UrlManager->getUrlById($url_id);
 
+    if (!$Url) {
+        return $this->get('view')->render($response, 'index.twig', array_merge($params, [
+            'menu_active' => 'main'
+        ]))->withStatus(500);
+    }
+
     try {
         $client = new GuzzleHttp\Client();
         $raw_response = $client->request('GET', $Url->getName());

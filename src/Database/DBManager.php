@@ -9,6 +9,5 @@ abstract class DBManager
     public function __construct(Connection $connection)
     {
         $this->pdo = $connection->getPdo();
-        return $this;
     }
 }

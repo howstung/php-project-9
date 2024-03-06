@@ -6,7 +6,7 @@ use App\Url\Url;
 
 class UrlManager extends DBManager
 {
-    public function save(Url $Url): void
+    public function save(Url $Url)
     {
         $stmt = $this->pdo->prepare("SELECT * FROM urls WHERE name = ?");
         $stmt->execute([$Url->getName()]);

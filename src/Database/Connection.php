@@ -20,7 +20,6 @@ class Connection
 
         $connectString = "{$provider}:host={$host};port={$port};dbname={$dbName};user={$username};password=$password";
         $this->pdo = new \PDO($connectString);
-        return $this->pdo;
     }
 
     public function getPdo(): \PDO

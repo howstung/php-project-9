@@ -10,8 +10,8 @@ class Url
     use CreatedAt;
     use Model;
 
-    private $name;
-    private $errMsg;
+    private string $name;
+    private string $errMsg;
 
     public function __construct(mixed $params)
     {
@@ -21,19 +21,9 @@ class Url
             ];
         }
         $this->id = $params['id'] ?? null;
-        $this->name = $params['name'] ?? null;
+        $this->name = $params['name'] ?? '';
         $this->setCreatedAt($params['created_at'] ?? null);
     }
-
-    private function parse($name)
-    {
-        $url = parse_url($name);
-        if (!$url || !array_key_exists('scheme', $url) || !array_key_exists('host', $url)) {
-            return $name;
-        }
-        return $url['scheme'] . '://' . $url['host'];
-    }
-
 
     public function isValid()
     {
