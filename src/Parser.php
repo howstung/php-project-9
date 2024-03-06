@@ -48,6 +48,7 @@ class Parser
     private function getTag(string $tagSearch)
     {
         $document = $this->document;
-        return $document->find($tagSearch)[0];
+        $domElements = $document->find($tagSearch);
+        return (count($domElements) > 0) ? $domElements[0] : null;
     }
 }
